@@ -1,0 +1,22 @@
+{
+    "cortex-debug.armToolchainPath": "/home/sergey/soft/gcc-arm-none-eabi-8-2018-q4-major/bin",
+    "cortex-debug.openocdPath": "/usr/bin/openocd",
+    "files.associations": {
+        "gps.h": "c",
+        "ublox.h": "c",
+        "main.h": "c",
+        "freertosconfig.h": "c",
+        "common_defs.h": "c",
+        "gt911.h": "c",
+        "lis3dsh.h": "c",
+        "usb_host.h": "c",
+        "sdio.h": "c",
+        "usbh_diskio.h": "c",
+        "lcd.h": "c",
+        "nrf_delay.h": "c",
+        "boards.h": "c",
+        "nrf_drv_timer.h": "c",
+        "bsp.h": "c",
+        "stdbool.h": "c"
+    },
+}
