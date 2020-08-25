@@ -89,7 +89,7 @@
 // <4294967295=> Not connected 
 
 #ifndef SPI_SCK_PIN
-//#define SPI_SCK_PIN 26
+//#define SPI_SCK_PIN 34
 #endif
 
 // <o> SPI_MISO_PIN  - Pin number
@@ -129,7 +129,7 @@
 // <4294967295=> Not connected 
 
 #ifndef SPI_MISO_PIN
-//#define SPI_MISO_PIN 30
+//#define SPI_MISO_PIN 31
 #endif
 
 // <o> SPI_MOSI_PIN  - Pin number
@@ -169,7 +169,7 @@
 // <4294967295=> Not connected 
 
 #ifndef SPI_MOSI_PIN
-//#define SPI_MOSI_PIN 29
+//#define SPI_MOSI_PIN 32
 #endif
 
 // <o> SPI_SS_PIN  - Pin number
@@ -209,7 +209,7 @@
 // <4294967295=> Not connected 
 
 #ifndef SPI_SS_PIN
-//#define SPI_SS_PIN 31
+//#define SPI_SS_PIN 33
 #endif
 
 // <o> SPI_IRQ_PRIORITY  - Interrupt priority
@@ -270,7 +270,7 @@
 // <e> NRFX_GPIOTE_ENABLED - nrfx_gpiote - GPIOTE peripheral driver
 //==========================================================
 #ifndef NRFX_GPIOTE_ENABLED
-#define NRFX_GPIOTE_ENABLED 1
+#define NRFX_GPIOTE_ENABLED 0
 #endif
 // <o> NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS - Number of lower power input pins 
 #ifndef NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS
@@ -447,7 +447,7 @@
  
 
 #ifndef NRFX_SPIM0_ENABLED
-#define NRFX_SPIM0_ENABLED 0
+#define NRFX_SPIM0_ENABLED 1
 #endif
 
 // <q> NRFX_SPIM1_ENABLED  - Enable SPIM1 instance
@@ -565,7 +565,7 @@
  
 
 #ifndef NRFX_SPI0_ENABLED
-#define NRFX_SPI0_ENABLED 0
+#define NRFX_SPI0_ENABLED 1
 #endif
 
 // <q> NRFX_SPI1_ENABLED  - Enable SPI1 instance
@@ -1072,7 +1072,7 @@
 // <e> UART0_ENABLED - Enable UART0 instance
 //==========================================================
 #ifndef UART0_ENABLED
-#define UART0_ENABLED 1
+#define UART0_ENABLED 0
 #endif
 // <q> UART0_CONFIG_USE_EASY_DMA  - Default setting for using EasyDMA
  
@@ -1127,7 +1127,7 @@
 // <31=> 1024 Hz 
 
 #ifndef APP_TIMER_CONFIG_RTC_FREQUENCY
-#define APP_TIMER_CONFIG_RTC_FREQUENCY 0
+#define APP_TIMER_CONFIG_RTC_FREQUENCY 31
 #endif
 
 // <o> APP_TIMER_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -1499,7 +1499,7 @@
 // <i> Log data is buffered and can be processed in idle.
 
 #ifndef NRF_LOG_DEFERRED
-#define NRF_LOG_DEFERRED 0
+#define NRF_LOG_DEFERRED 1
 #endif
 
 // <q> NRF_LOG_FILTERS_ENABLED  - Enable dynamic filtering of logs.
@@ -4429,7 +4429,7 @@
 // <e> TIMER_ENABLED - nrf_drv_timer - TIMER periperal driver - legacy layer
 //==========================================================
 #ifndef TIMER_ENABLED
-#define TIMER_ENABLED 1
+#define TIMER_ENABLED 0
 #endif
 // <o> TIMER_DEFAULT_CONFIG_FREQUENCY  - Timer frequency if in Timer mode
  
@@ -4575,7 +4575,7 @@
  
 
 #ifndef NRFX_SAADC_CONFIG_LP_MODE
-#define NRFX_SAADC_CONFIG_LP_MODE 0
+#define NRFX_SAADC_CONFIG_LP_MODE 1
 #endif
 
 // <o> NRFX_SAADC_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -4592,7 +4592,6 @@
 #ifndef NRFX_SAADC_CONFIG_IRQ_PRIORITY
 #define NRFX_SAADC_CONFIG_IRQ_PRIORITY 6
 #endif
-
 
 // <e> NRF_CLOCK_ENABLED - nrf_drv_clock - CLOCK peripheral driver - legacy layer
 //==========================================================
@@ -4629,6 +4628,8 @@
 #endif
 
 // </e>
+
+
 // <<< end of configuration section >>>
 #endif //SDK_CONFIG_H
 

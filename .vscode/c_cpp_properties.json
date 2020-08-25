@@ -32,7 +32,8 @@
                 "~/Projects/NRF52/SDK/integration/nrfx",
                 "~/Projects/NRF52/SDK/external/segger_rtt",
                 "~/Projects/NRF52/SDK/modules/nrfx/drivers/include",
-                "/home/sergey/Projects/NRF52/SDK/components/libraries/pwr_mgmt"
+                "/home/sergey/Projects/NRF52/SDK/components/libraries/pwr_mgmt",
+                "/home/sergey/Projects/NRF52/SDK/components/libraries/timer"
             ],
             "defines": [
                 "BOARD_PCA10040",

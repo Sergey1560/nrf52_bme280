@@ -3,8 +3,7 @@
 #include "radio.h"
 #include "nrf_drv_saadc.h"
 
-
-const nrf_drv_timer_t work_timer = NRF_DRV_TIMER_INSTANCE(0);
+APP_TIMER_DEF(timer_id);
 
 int saadc_measure() {
   nrf_saadc_value_t value;
@@ -13,19 +12,17 @@ int saadc_measure() {
 }
 
 
-void deinit_timer(void){
-    nrfx_timer_uninit(&work_timer);
-}
-
-
 void init_timer(void){
-    uint32_t time_ticks;
-    nrf_drv_timer_config_t timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;
-    
-    APP_ERROR_CHECK(nrf_drv_timer_init(&work_timer, &timer_cfg, timer_handler));
-    time_ticks = nrf_drv_timer_ms_to_ticks(&work_timer, TIMER_MS);
-    nrf_drv_timer_extended_compare(&work_timer, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
-    nrf_drv_timer_enable(&work_timer);
+   ret_code_t err_code;
+
+    app_timer_init();
+    // Create timers
+    err_code = app_timer_create(&timer_id, APP_TIMER_MODE_REPEATED, timer_handler);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = app_timer_start(timer_id, APP_TIMER_TICKS(TIMER_MS), NULL);
+    APP_ERROR_CHECK(err_code);
+
 }
 
 
@@ -50,42 +47,36 @@ int saadc_deinit() {
 }
 
 
-void timer_handler(nrf_timer_event_t event_type, void* p_context){
-    //struct bme280_data bme_data;
+void timer_handler(void * p_context){
+    NRF_LOG_INFO("Timer");
+    struct bme280_data bme_data;
     struct tx_data bme_tx_data;
 
     int16_t adc_value;
     double d;
 
-    switch (event_type){
-        case NRF_TIMER_EVENT_COMPARE0:
-            saadc_init();
-            //spi_init();
-            adc_value = saadc_measure();
-            
-            if(adc_value < 0) adc_value = 0;
-            
-            d = (3.3 * adc_value) / 1024.0;
-            d = d * 3.47826 * 100.0;
+    clocks_start();
 
-            //bme_data = user_bme280_poll();
-            // bme_tx_data.temperature = bme_data.temperature;
-            // bme_tx_data.humidity = bme_data.humidity;
-            // bme_tx_data.pressure = bme_data.pressure;
-            // bme_tx_data.vbat = (uint32_t)d;
+    saadc_init();
+    spi_init();
+    adc_value = saadc_measure();
     
-            bme_tx_data.humidity = 1023;
-            bme_tx_data.pressure = 5400;
-            bme_tx_data.temperature = 2345;
-            bme_tx_data.vbat = 796;
-            send_esb_packet(&bme_tx_data);
-            nrf_drv_saadc_uninit();
-            spi_uninit();
-            break;
+    if(adc_value < 0) adc_value = 0;
+    
+    d = (3.3 * adc_value) / 1024.0;
+    d = d * 3.47826 * 100.0;
 
-        default:
-            //Do nothing.
-            break;
-    }
+    bme_data = user_bme280_poll();
+
+    nrf_drv_saadc_uninit();
+    spi_uninit();
+
+    bme_tx_data.temperature = bme_data.temperature;
+    bme_tx_data.humidity = bme_data.humidity;
+    bme_tx_data.pressure = bme_data.pressure;
+    bme_tx_data.vbat = (uint32_t)d;
+   
+    send_esb_packet(&bme_tx_data);
+   
 }
 

@@ -1,11 +1,40 @@
 #include "sys_config.h"
 
+#define RAM_RETENTION_OFF       (0x00000003UL)  /**< The flag used to turn off RAM retention on nRF52. */
+
+
+void configure_ram_retention(void){
+    NRF_POWER->RAM[0].POWER = RAM_RETENTION_OFF;
+    NRF_POWER->RAM[1].POWER = RAM_RETENTION_OFF;
+    NRF_POWER->RAM[2].POWER = RAM_RETENTION_OFF;
+    NRF_POWER->RAM[3].POWER = RAM_RETENTION_OFF;
+    NRF_POWER->RAM[4].POWER = RAM_RETENTION_OFF;
+    NRF_POWER->RAM[5].POWER = RAM_RETENTION_OFF;
+    NRF_POWER->RAM[6].POWER = RAM_RETENTION_OFF;
+    NRF_POWER->RAM[7].POWER = RAM_RETENTION_OFF;
+}
+
+
+void lfclk_request(void)
+{
+    ret_code_t err_code = nrf_drv_clock_init();
+    APP_ERROR_CHECK(err_code);
+    nrf_drv_clock_lfclk_request(NULL);
+    
+}
+
 
 void clocks_start( void ){
     NRF_CLOCK->EVENTS_HFCLKSTARTED = 0;
     NRF_CLOCK->TASKS_HFCLKSTART = 1;
 
     while (NRF_CLOCK->EVENTS_HFCLKSTARTED == 0);
+}
+
+void clocks_stop( void ){
+    
+    NRF_CLOCK->TASKS_HFCLKSTOP = 1;
+    
 }
 
 
@@ -101,4 +130,7 @@ void sys_info(void){
         break;
 
   }
+
+     NRF_LOG_INFO("Start at %d Mhz",SystemCoreClock);
+
 }

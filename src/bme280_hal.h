@@ -16,10 +16,16 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
-#define SPI_SCK_PIN 18
-#define SPI_MOSI_PIN 16
-#define SPI_MISO_PIN 15
-#define SPI_SS_PIN 17
+// #define SPI_SCK_PIN 18
+// #define SPI_MOSI_PIN 16
+// #define SPI_MISO_PIN 15
+// #define SPI_SS_PIN 17
+
+#define SPI_SCK_PIN 30
+#define SPI_MOSI_PIN 11
+#define SPI_MISO_PIN 13
+#define SPI_SS_PIN 12
+
 
 void spi_init(void);
 void spi_uninit(void);
