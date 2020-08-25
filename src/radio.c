@@ -16,7 +16,7 @@ uint32_t esb_init( void ){
     nrf_esb_config_t nrf_esb_config         = NRF_ESB_DEFAULT_CONFIG;
     nrf_esb_config.protocol                 = NRF_ESB_PROTOCOL_ESB_DPL;
     nrf_esb_config.retransmit_delay         = 600;
-    nrf_esb_config.bitrate                  = RADIO_MODE_MODE_Nrf_1Mbit;
+    nrf_esb_config.bitrate                  = RADIO_MODE_MODE_Nrf_2Mbit;
     nrf_esb_config.event_handler            = nrf_esb_event_handler;
     nrf_esb_config.mode                     = NRF_ESB_MODE_PTX;
     nrf_esb_config.selective_auto_ack       = false;
