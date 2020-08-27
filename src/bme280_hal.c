@@ -28,7 +28,6 @@ int8_t def_stream_sensor_data_forced_mode(struct bme280_dev *dev, struct bme280_
     dev->delay_us(req_delay, dev->intf_ptr);
     nrf_delay_ms(40);
     rslt = bme280_get_sensor_data(BME280_ALL, comp_data, dev);
-    NRF_LOG_INFO("BME280 %ld, %ld, %ld\r\n",comp_data->temperature, comp_data->pressure, comp_data->humidity);
     return rslt;
 }
 
@@ -50,14 +49,12 @@ void spi_init(void){
 }
 
 void user_bme280_init(void){
-    spi_init();
 	dev.intf_ptr = &dev_addr;
 	dev.intf = BME280_SPI_INTF;
 	dev.read = user_spi_read;
 	dev.write = user_spi_write;
 	dev.delay_us = user_delay_ms;
 	bme280_init(&dev);
-    spi_uninit();
 }
 
 struct bme280_data user_bme280_poll(void){

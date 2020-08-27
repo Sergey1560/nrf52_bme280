@@ -12,6 +12,7 @@
 #include "sys_config.h"
 #include "timer.h"
 #include "radio.h"
+#include "saadc.h"
 
 int main(void){
    
@@ -20,20 +21,26 @@ int main(void){
 
    NRF_LOG_INFO("Start");
    
-   
+   //Start HFCLK for SPI
+   clocks_start();
+
    lfclk_request();
    configure_ram_retention();
-   
+
+   saadc_init();
+   spi_init();
    esb_init();
+
+   //Init BME280 
    user_bme280_init();
+
+   //Init App timer 
    init_timer();
      
     while (1) {
             // Enter System ON sleep mode
-            if(!NRF_LOG_PROCESS()){
             __WFE();
             __SEV();
             __WFE();
-            }
     }
 }

@@ -18,6 +18,7 @@
 #include "bme280_hal.h"
 #include "sys_config.h"
 
+
 #define PA_PRESENT
 
 #ifdef PA_PRESENT
@@ -35,10 +36,12 @@
 #endif
 
 struct tx_data{
+    uint32_t count;
     uint32_t pressure;
     int32_t temperature;
     uint32_t humidity;
     uint32_t vbat;
+    uint32_t solar_bat;
 };
 
 

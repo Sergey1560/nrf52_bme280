@@ -34,7 +34,7 @@ void clocks_start( void ){
 void clocks_stop( void ){
     
     NRF_CLOCK->TASKS_HFCLKSTOP = 1;
-    
+        
 }
 
 
