@@ -16,7 +16,7 @@
 #include "radio.h"
 #include "sys_config.h"
 
-#define TIMER_MS  (uint32_t)10000
+#define TIMER_MS  (uint32_t)60000
 
 void init_timer(void);
 void deinit_timer(void);

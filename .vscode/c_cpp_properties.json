@@ -2,38 +2,11 @@
     "configurations": [
         {
             "name": "vscode_stm32_c_cpp_properties",
-            "compilerPath": "/home/sergey/soft/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-gcc",
+            "compilerPath": "/home/sergey/soft/gcc-arm-none-eabi/bin/arm-none-eabi-gcc",
             "includePath": [
                 "${workspaceFolder}/src/",
-                "~/Projects/NRF52/SDK/components/",
-                "~/Projects/NRF52/SDK/modules/nrfx/mdk",
-                "~/Projects/NRF52/SDK/components/libraries/strerror",
-                "~/Projects/NRF52/SDK/components/toolchain/cmsis/include",
-                "~/Projects/NRF52/SDK/components/libraries/util",
-                "~/Projects/NRF52/SDK/components/libraries/balloc",
-                "~/Projects/NRF52/SDK/components/libraries/ringbuf",
-                "~/Projects/NRF52/SDK/modules/nrfx/hal",
-                "~/Projects/NRF52/SDK/components/libraries/bsp",
-                "~/Projects/NRF52/SDK/components/libraries/log",
-                "~/Projects/NRF52/SDK/modules/nrfx",
-                "~/Projects/NRF52/SDK/components/libraries/experimental_section_vars",
-                "~/Projects/NRF52/SDK/components/libraries/delay",
-                "~/Projects/NRF52/SDK/integration/nrfx",
-                "~/Projects/NRF52/SDK/components/drivers_nrf/nrf_soc_nosd",
-                "~/Projects/NRF52/SDK/components/libraries/atomic",
-                "~/Projects/NRF52/SDK/components/boards",
-                "~/Projects/NRF52/SDK/components/libraries/memobj",
-                "~/Projects/NRF52/SDK/external/fprintf",
-                "~/Projects/NRF52/SDK/components/libraries/log/src",
-                "~/Projects/NRF52/SDK/components/boards",
-                "${workspaceFolder}/config",
-                "~/Projects/NRF52/SDK/components/proprietary_rf/esb",
-                "~/Projects/NRF52/SDK/integration/nrfx/legacy",
-                "~/Projects/NRF52/SDK/integration/nrfx",
-                "~/Projects/NRF52/SDK/external/segger_rtt",
-                "~/Projects/NRF52/SDK/modules/nrfx/drivers/include",
-                "/home/sergey/Projects/NRF52/SDK/components/libraries/pwr_mgmt",
-                "/home/sergey/Projects/NRF52/SDK/components/libraries/timer"
+                "~/Projects/NRF52/SDK/**",
+                "${workspaceFolder}/config"
             ],
             "defines": [
                 "BOARD_PCA10040",
@@ -47,7 +20,7 @@
             ],
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "linux-gcc-arm"
         }
     ],
     "version": 4
